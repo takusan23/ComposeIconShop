@@ -28,7 +28,7 @@ function main() {
              * settings_applications → settingsApplications
              */
             const iconNameList = iconList
-                .map(icon => _snake2Pascal(icon)) // lodashでらくらく変換
+                .map(icon => _snake2Pascal(icon))
                 .map(icon => {
                     if (!isNaN(parseInt(icon.split(0, 1)))) {
                         // 数字スタートの場合は先頭に_をつける

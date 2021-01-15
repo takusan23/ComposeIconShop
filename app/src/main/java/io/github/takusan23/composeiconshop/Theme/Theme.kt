@@ -7,28 +7,22 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
 private val DarkColorPalette = darkColors(
-        primary = purple200,
-        primaryVariant = purple700,
-        secondary = teal200
+    primary = colorPrimary,
+    primaryVariant = colorLight,
+    secondary = colorDark
 )
 
 private val LightColorPalette = lightColors(
-        primary = purple500,
-        primaryVariant = purple700,
-        secondary = teal200
-
-        /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+    primary = colorPrimary,
+    primaryVariant = colorLight,
+    secondary = colorDark
 )
 
 @Composable
-fun ComposeIconShopTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+fun ComposeIconShopTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable() () -> Unit
+) {
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {
@@ -36,9 +30,9 @@ fun ComposeIconShopTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @C
     }
 
     MaterialTheme(
-            colors = colors,
-            typography = typography,
-            shapes = shapes,
-            content = content
+        colors = colors,
+        typography = typography,
+        shapes = shapes,
+        content = content
     )
 }

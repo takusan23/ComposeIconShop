@@ -12,19 +12,19 @@ import androidx.compose.ui.graphics.vector.ImageVector
 object IconLoad {
 
     /** デフォルトアイコン */
-    const val ICON_DEFAULT = 1
+    const val ICON_DEFAULT = "Default"
 
     /** アウトラインアイコン */
-    const val ICON_OUTLINED = 2
+    const val ICON_OUTLINED = "Outlined"
 
     /** 丸みを帯びたアイコン */
-    const val ICON_ROUNDED = 3
+    const val ICON_ROUNDED = "Rounded"
 
     /** 二色で構成されたアイコン */
-    const val ICON_TWO_TONE = 4
+    const val ICON_TWO_TONE = "TwoTone"
 
     /** シャープなアイコン */
-    const val ICON_SHARP = 5
+    const val ICON_SHARP = "Sharp"
 
     /**
      * アイコンの名前からImageVectorを取得する。
@@ -33,7 +33,7 @@ object IconLoad {
      * @param iconName アイコンの名前。パスカルケース（AddCircleみたいな感じ）
      * @param iconType アイコンの形状。アウトラインとか。[ICON_DEFAULT]とかが入る
      * */
-    fun getIconFromName(iconName: String, iconType: Int = ICON_DEFAULT): ImageVector? {
+    fun getIconFromName(iconName: String, iconType: String = ICON_DEFAULT): ImageVector? {
         try {
 
             // 形状
