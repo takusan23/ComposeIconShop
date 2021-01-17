@@ -1,4 +1,4 @@
-package io.github.takusan23.composeiconshop.ui.theme
+package io.github.takusan23.composeiconshop.Compose.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

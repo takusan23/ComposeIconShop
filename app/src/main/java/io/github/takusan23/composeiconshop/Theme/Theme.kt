@@ -1,4 +1,4 @@
-package io.github.takusan23.composeiconshop.ui.theme
+package io.github.takusan23.composeiconshop.Compose.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

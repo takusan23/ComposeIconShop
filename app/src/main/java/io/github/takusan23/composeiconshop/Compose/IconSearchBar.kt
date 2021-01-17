@@ -1,9 +1,10 @@
-package io.github.takusan23.composeiconshop.UI
+package io.github.takusan23.composeiconshop.Compose
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.AppSettingsAlt
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Clear
 import androidx.compose.material.icons.outlined.Search
@@ -28,6 +29,7 @@ fun IconSearchAppBar(
     onChangeSearchText: (String) -> Unit,
     isShowBackIcon: Boolean = false,
     onClickBackIcon: () -> Unit = {},
+    onClickSettingIcon:()->Unit = {},
 ) {
     TopAppBar(
         title = {
@@ -47,6 +49,11 @@ fun IconSearchAppBar(
             }
         },
         actions = {
+            // 設定
+            IconButton(onClick = { onClickSettingIcon() }) {
+                Icon(imageVector = Icons.Outlined.AppSettingsAlt)
+            }
+            // 検索
             if (isShowSearchIcon) {
                 IconButton(onClick = { onClickSearchIcon() }) {
                     if (isShowSearchBox) {

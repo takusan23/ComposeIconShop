@@ -21,6 +21,7 @@ import io.github.takusan23.composeiconshop.Navigation.IconDetailNavigationData
 import io.github.takusan23.composeiconshop.Navigation.NavigationNames
 import io.github.takusan23.composeiconshop.Tool.IconLoad
 import io.github.takusan23.composeiconshop.Tool.JSONLoad
+import io.github.takusan23.composeiconshop.Compose.ModalSetting
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -28,12 +29,15 @@ import java.util.*
  * アイコン一覧表示画面
  *
  * @param viewModel 画面遷移を行うため
+ * @param iconSearch 検索機能を利用する場合は検索ワードを入れてね
+ * @param [ModalSetting.CLICK_DEFAULT]などを入れるとアイコンの種類を変更できます。
  * */
 @ExperimentalFoundationApi
 @Composable
 fun HomeScreen(
     viewModel: MainActivityViewModel,
     iconSearch: String,
+    iconType: Int = ModalSetting.CLICK_DEFAULT,
 ) {
     // スクロール位置をLiveDataで受け取る
     val scrollPos = viewModel.homeScreenScrollPos.observeAsState(initial = 0)
@@ -50,6 +54,7 @@ fun HomeScreen(
         iconNameList = iconNameList,
         scroll = scrollPos.value,
         offset = offsetPos.value,
+        iconType = iconType,
         onIconClick = { iconName, pos, offset ->
             // 画面遷移前の位置を保存
             viewModel.homeScreenScrollPos.postValue(pos)
@@ -74,6 +79,7 @@ fun HomeScreen(
  * @param onIconClick アイコン押したとき
  * @param gridSize 横に何個並べるか。デフォ4
  * @param scroll スクロールさせる場合は何行目かを入れてね
+ * @param [ModalSetting.CLICK_DEFAULT]などを入れるとアイコンの種類を変更できます。
  * */
 @ExperimentalFoundationApi
 @Composable
@@ -83,6 +89,7 @@ fun GridIconList(
     gridSize: Int = 4,
     scroll: Int = 0,
     offset: Int = 0,
+    iconType: Int = 0,
 ) {
     // コルーチン
     val scope = rememberCoroutineScope()
@@ -100,6 +107,7 @@ fun GridIconList(
             this.itemsIndexed(iconNameList) { index, name ->
                 GridItem(
                     iconName = name,
+                    iconType = iconType,
                     onIconClick = {
                         // アイコン名と現在のスクロール位置を引数の関数に渡す
                         onIconClick(
@@ -120,13 +128,24 @@ fun GridIconList(
  *
  * @param iconName アイコン名
  * @param onIconClick アイコン押したとき
+ * @param [ModalSetting.CLICK_DEFAULT]などを入れるとアイコンの種類を変更できます。
  * */
 @Composable
 fun GridItem(
     iconName: String,
     onIconClick: (String) -> Unit,
+    iconType: Int = 0,
 ) {
-    val icon = IconLoad.getIconFromName(iconName)
+    // デフォルトかアウトラインか
+    val type = when (iconType) {
+        ModalSetting.CLICK_OUTLINE -> IconLoad.ICON_OUTLINED
+        ModalSetting.CLICK_ROUNDED -> IconLoad.ICON_ROUNDED
+        ModalSetting.CLICK_SHARP -> IconLoad.ICON_SHARP
+        ModalSetting.CLICK_TWO_TONE -> IconLoad.ICON_TWO_TONE
+        else -> IconLoad.ICON_DEFAULT
+    }
+
+    val icon = IconLoad.getIconFromName(iconName, type)
 
     if (icon != null) {
         TextButton(onClick = { onIconClick(iconName) }) {
