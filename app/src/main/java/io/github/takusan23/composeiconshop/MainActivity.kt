@@ -44,6 +44,8 @@ class MainActivity : AppCompatActivity() {
             val modalState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
             // アイコンの種類変更
             val iconType = remember { mutableStateOf(ModalSetting.CLICK_DEFAULT) }
+            // 何個並べるか。でふぉ４
+            val columnValue = remember { mutableStateOf(4) }
 
             ComposeIconShopTheme {
                 ModalBottomSheetLayout(
@@ -52,7 +54,9 @@ class MainActivity : AppCompatActivity() {
                     sheetContent = {
                         // モーダルに表示させる内容
                         ModalSettingSheetContent(
-                            onButtonClick = { type -> iconType.value = type }
+                            onButtonClick = { type -> iconType.value = type },
+                            column = columnValue.value,
+                            onChangeColumn = { col -> columnValue.value = col }
                         )
                     }
                 ) {
@@ -83,7 +87,8 @@ class MainActivity : AppCompatActivity() {
                             NavigationNames.HOME -> HomeScreen(
                                 viewModel = viewModel,
                                 iconSearch = searchWord.value,
-                                iconType = iconType.value
+                                iconType = iconType.value,
+                                column = columnValue.value,
                             )
                             NavigationNames.DETAIL -> DetailScreen(iconName = (screenLiveData.value!! as IconDetailNavigationData).iconName)
                         }

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
+import androidx.compose.material.Slider
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
@@ -18,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlin.math.roundToInt
 
 object ModalSetting {
     /** [ModalSettingSheetContent]の第一引数の関数の引数がこれと同じ場合はデフォルトを選択した。 */
@@ -44,10 +46,45 @@ object ModalSetting {
 @Composable
 fun ModalSettingSheetContent(
     onButtonClick: (Int) -> Unit,
+    column: Int = 4,
+    onChangeColumn: (Int) -> Unit,
 ) {
     Column {
         // ボタン
-        ModalSettingButtons(onButtonClick = { onButtonClick(it) })
+        ModalSettingButtons(
+            onButtonClick = { onButtonClick(it) },
+        )
+        // 何列並べるかの設定
+        ModalSettingColumnSeek(
+            column = column,
+            onChangeColumn = { col -> onChangeColumn(col) }
+        )
+    }
+}
+
+/**
+ * カラム数変更シークを置く
+ * */
+@Composable
+fun ModalSettingColumnSeek(
+    column: Int,
+    onChangeColumn: (Int) -> Unit,
+) {
+    Column {
+        Text(
+            text = "Column",
+            modifier = Modifier.padding(5.dp),
+            fontSize = 20.sp
+        )
+        Slider(
+            value = (column / 10f),
+            onValueChange = {
+                // 0以上
+                if ((it * 10).roundToInt() > 0) {
+                    onChangeColumn((it * 10).roundToInt())
+                }
+            }
+        )
     }
 }
 

@@ -38,6 +38,7 @@ fun HomeScreen(
     viewModel: MainActivityViewModel,
     iconSearch: String,
     iconType: Int = ModalSetting.CLICK_DEFAULT,
+    column: Int = 4,
 ) {
     // スクロール位置をLiveDataで受け取る
     val scrollPos = viewModel.homeScreenScrollPos.observeAsState(initial = 0)
@@ -55,6 +56,7 @@ fun HomeScreen(
         scroll = scrollPos.value,
         offset = offsetPos.value,
         iconType = iconType,
+        gridSize = column,
         onIconClick = { iconName, pos, offset ->
             // 画面遷移前の位置を保存
             viewModel.homeScreenScrollPos.postValue(pos)
