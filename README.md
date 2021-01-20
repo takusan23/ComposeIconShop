@@ -100,8 +100,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ## アイコン取得のためにリフレクション
 アイコン一覧の配列等は（多分）ない。 
 
-ちなみに本家は`Python`でアイコン一覧を取得している模様。本家README参照（https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:compose/material/material/icons/README.md）  
-ソースコードを見に行けばアイコン一覧が見ようと思えば見れる（https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:compose/material/material/icons/generator/raw-icons/filled/）  
+ちなみに本家は`Python`でアイコン一覧を取得している模様。本家README参照（ https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:compose/material/material/icons/README.md ）  
+ソースコードを見に行けばアイコン一覧が見ようと思えば見れる（ https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:compose/material/material/icons/generator/raw-icons/filled/ ）  
 ただし、Kotlinファイルはライブラリ生成時に生成されるらしく？見てもない。
 
 まず、アイコンを返す関数があるクラスを取得するために、`クラスの名前`からクラスを取得する`Class.forName()`を利用します。 
