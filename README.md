@@ -79,7 +79,8 @@ fun gotoHome() {
 }
 ```
 
-`Jetpack Compose`側はこうなってる
+`Jetpack Compose`側はこうなってる  
+画面も`Fragment`ではなく`Jetpack Compose`で作成しています。
 
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
