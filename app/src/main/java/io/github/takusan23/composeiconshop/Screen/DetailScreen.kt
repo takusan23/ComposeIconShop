@@ -4,6 +4,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -24,13 +26,15 @@ import io.github.takusan23.composeiconshop.Tool.IconLoad
 fun DetailScreen(
     iconName: String,
 ) {
-    ScrollableColumn {
-        IconDetailCard(iconName = iconName, IconLoad.ICON_DEFAULT)
-        IconDetailCard(iconName = iconName, IconLoad.ICON_OUTLINED)
-        IconDetailCard(iconName = iconName, IconLoad.ICON_ROUNDED)
-        IconDetailCard(iconName = iconName, IconLoad.ICON_SHARP)
-        IconDetailCard(iconName = iconName, IconLoad.ICON_TWO_TONE)
-    }
+    LazyColumn(content = {
+        item {
+            IconDetailCard(iconName = iconName, IconLoad.ICON_DEFAULT)
+            IconDetailCard(iconName = iconName, IconLoad.ICON_OUTLINED)
+            IconDetailCard(iconName = iconName, IconLoad.ICON_ROUNDED)
+            IconDetailCard(iconName = iconName, IconLoad.ICON_SHARP)
+            IconDetailCard(iconName = iconName, IconLoad.ICON_TWO_TONE)
+        }
+    })
 }
 
 /**
@@ -63,7 +67,8 @@ fun IconDetailCard(iconName: String, iconType: String = IconLoad.ICON_OUTLINED) 
                         .height(100.dp)
                         .width(100.dp)
                         .padding(10.dp)
-                        .align(Alignment.CenterHorizontally)
+                        .align(Alignment.CenterHorizontally),
+                    contentDescription = "Icon"
                 )
             }
         }

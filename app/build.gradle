@@ -35,25 +35,26 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.4.21'
+        kotlinCompilerVersion '1.4.30'
     }
 }
 
 dependencies {
 
     // Jetpack Compose --- ここから
-    implementation 'androidx.compose.ui:ui:1.0.0-alpha10'
-    implementation 'androidx.compose.ui:ui-tooling:1.0.0-alpha10'
-    implementation 'androidx.compose.foundation:foundation:1.0.0-alpha10'
-    implementation 'androidx.compose.material:material:1.0.0-alpha10'
-    implementation 'androidx.compose.material:material-icons-core:1.0.0-alpha10'
-    implementation 'androidx.compose.material:material-icons-extended:1.0.0-alpha10'
-    implementation 'androidx.compose.runtime:runtime-livedata:1.0.0-alpha10'
+    implementation 'androidx.compose.ui:ui:1.0.0-alpha12'
+    implementation 'androidx.compose.ui:ui-tooling:1.0.0-alpha12'
+    implementation 'androidx.compose.foundation:foundation:1.0.0-alpha12'
+    implementation 'androidx.compose.material:material:1.0.0-alpha12'
+    implementation 'androidx.compose.material:material-icons-core:1.0.0-alpha12'
+    implementation 'androidx.compose.material:material-icons-extended:1.0.0-alpha12'
+    implementation 'androidx.compose.runtime:runtime-livedata:1.0.0-alpha12'
+    implementation 'androidx.activity:activity-compose:1.3.0-alpha02'
     // Jetpack Compose --- ここまで
 
     // Activity Result APIでonActivityResultを駆逐する。
-    implementation 'androidx.activity:activity-ktx:1.2.0-beta01'
-    implementation 'androidx.fragment:fragment-ktx:1.3.0-beta01'
+    implementation 'androidx.activity:activity-ktx:1.3.0-alpha02'
+    implementation 'androidx.fragment:fragment-ktx:1.3.0'
     // ViewModel と LiveData
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 

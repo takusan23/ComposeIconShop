@@ -114,7 +114,8 @@ fun ModalSettingButtons(
                 Column {
                     Icon(
                         imageVector = Icons.Default.Home,
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        contentDescription = "Default"
                     )
                     Text(
                         text = "Default",
@@ -129,7 +130,8 @@ fun ModalSettingButtons(
                 Column {
                     Icon(
                         imageVector = Icons.Outlined.Home,
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        contentDescription = "Outlined"
                     )
                     Text(
                         text = "Outlined",
@@ -144,7 +146,8 @@ fun ModalSettingButtons(
                 Column {
                     Icon(
                         imageVector = Icons.Rounded.Home,
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        contentDescription = "Rounded"
                     )
                     Text(
                         text = "Rounded",
@@ -159,7 +162,8 @@ fun ModalSettingButtons(
                 Column {
                     Icon(
                         imageVector = Icons.Sharp.Home,
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        contentDescription = "Sharp"
                     )
                     Text(
                         text = "Sharp",
@@ -174,7 +178,8 @@ fun ModalSettingButtons(
                 Column {
                     Icon(
                         imageVector = Icons.TwoTone.Home,
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        contentDescription = "TwoTone"
                     )
                     Text(
                         text = "TwoTone",

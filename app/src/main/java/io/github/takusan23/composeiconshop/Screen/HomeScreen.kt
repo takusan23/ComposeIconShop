@@ -4,6 +4,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -14,6 +15,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.AmbientContext
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import io.github.takusan23.composeiconshop.MainActivityViewModel
@@ -46,7 +48,7 @@ fun HomeScreen(
     val offsetPos = viewModel.homeScreenScrollOffset.observeAsState(initial = 0)
 
     // 検索機能
-    val iconNameList = JSONLoad.load(AmbientContext.current)
+    val iconNameList = JSONLoad.load(LocalContext.current)
         .filter { name ->
             name.contains(iconSearch) || name.toLowerCase(Locale.ROOT).contains(iconSearch)
         }
@@ -106,7 +108,7 @@ fun GridIconList(
         cells = GridCells.Fixed(gridSize),
         state = state,
         content = {
-            this.itemsIndexed(iconNameList) { index, name ->
+            itemsIndexed(iconNameList) { index, name ->
                 GridItem(
                     iconName = name,
                     iconType = iconType,
@@ -160,7 +162,8 @@ fun GridItem(
                     modifier = Modifier
                         .padding(2.dp)
                         .fillMaxWidth()
-                        .height(50.dp)
+                        .height(50.dp),
+                    contentDescription = "Icon"
                 )
                 Text(
                     text = iconName,

@@ -2,6 +2,7 @@ package io.github.takusan23.composeiconshop
 
 import android.os.Bundle
 import androidx.activity.addCallback
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -10,7 +11,6 @@ import androidx.compose.material.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import io.github.takusan23.composeiconshop.Navigation.IconDetailNavigationData
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // Jetpack Composeでレイアウト作成
-        setContent {
+        this.setContent(null) {
 
             // 画面遷移
             val screenLiveData = viewModel.screenLiveData.observeAsState()
@@ -41,7 +41,8 @@ class MainActivity : AppCompatActivity() {
             // 検索ワード
             val searchWord = remember { mutableStateOf("") }
             // モーダルシード出すか
-            val modalState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
+            val modalState =
+                rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
             // アイコンの種類変更
             val iconType = remember { mutableStateOf(ModalSetting.CLICK_DEFAULT) }
             // 何個並べるか。でふぉ４

@@ -29,7 +29,7 @@ fun IconSearchAppBar(
     onChangeSearchText: (String) -> Unit,
     isShowBackIcon: Boolean = false,
     onClickBackIcon: () -> Unit = {},
-    onClickSettingIcon:()->Unit = {},
+    onClickSettingIcon: () -> Unit = {},
 ) {
     TopAppBar(
         title = {
@@ -51,17 +51,26 @@ fun IconSearchAppBar(
         actions = {
             // 設定
             IconButton(onClick = { onClickSettingIcon() }) {
-                Icon(imageVector = Icons.Outlined.AppSettingsAlt)
+                Icon(
+                    imageVector = Icons.Outlined.AppSettingsAlt,
+                    contentDescription = "Settings"
+                )
             }
             // 検索
             if (isShowSearchIcon) {
                 IconButton(onClick = { onClickSearchIcon() }) {
                     if (isShowSearchBox) {
                         // クリアボタン
-                        Icon(imageVector = Icons.Outlined.Clear)
+                        Icon(
+                            imageVector = Icons.Outlined.Clear,
+                            contentDescription = "Clear"
+                        )
                     } else {
                         // 虫眼鏡
-                        Icon(imageVector = Icons.Outlined.Search)
+                        Icon(
+                            imageVector = Icons.Outlined.Search,
+                            contentDescription = "Search"
+                        )
                     }
                 }
             }
@@ -70,7 +79,10 @@ fun IconSearchAppBar(
         navigationIcon = if (isShowBackIcon) {
             {
                 IconButton(onClick = { onClickBackIcon() }) {
-                    Icon(imageVector = Icons.Outlined.ArrowBack)
+                    Icon(
+                        imageVector = Icons.Outlined.ArrowBack,
+                        contentDescription = "Back"
+                    )
                 }
             }
         } else null

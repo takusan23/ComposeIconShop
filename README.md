@@ -22,6 +22,7 @@
 ## 必要なもの
 - Android アプリ開発環境
     - Android StudioはCanary版を利用してください。
+    - Android Studio Arctic Fox | 2020.3.1 Canary 6
 - Node.js
     - アプリの実行には使いませんが、アイコンの名前を取得する際に利用します
     - まあ無くても動く
@@ -40,6 +41,11 @@ $ npm run dev
     - あんのに無いって言われる場合
     - `Build` > `Clean Project` を実行
     - 名前が悪い？
+- `Scanning files to index`が進む気配すらない
+    - `.idea`フォルダを消して再度起動
+- `'padding(Dp): Modifier' is only available since Kotlin 1.4.30 and cannot be used in Kotlin 1.4`
+    - エラーに見えるけど実行できる。
+    - 設定を開いて、`Languages & Frameworks`へ進み`Kotlin`を押して、`Update Channel`を`Early Access Preview 1.4.x`にして`Install`を押せばいいらしい。
 
 # 技術的な話
 
